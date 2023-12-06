@@ -13,7 +13,7 @@
 ## Клонирование репозитория
 
 ```
-git clone https://github.com/mqwxz/LLC-Decorations.git
+git clone https://github.com/mqwxz/Decorations.git
 ```
 
 ## Автор
