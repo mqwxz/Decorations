@@ -74,21 +74,28 @@ namespace LLC_Decoration.UI
 
         private void LoadDataToListBox()
         {
-            //Заполнение ListBox данными о выбранных товаров пользователем.
-            lstOrders.DataSource = showOrders;
-            lstOrders.DisplayMember = "";
-            lstOrders.DisplayMember = "Values";
-
-            GetCost();
-
-            //Если количество товаров = 0, то кнопка "Заказать" не будет доступна.
-            if (lstOrders.Items.Count == 0)
+            try
             {
-                btnMakeOrder.Enabled = false;
+                //Заполнение ListBox данными о выбранных товаров пользователем.
+                lstOrders.DataSource = showOrders;
+                lstOrders.DisplayMember = "";
+                lstOrders.DisplayMember = "Values";
+
+                GetCost();
+
+                //Если количество товаров = 0, то кнопка "Заказать" не будет доступна.
+                if (lstOrders.Items.Count == 0)
+                {
+                    btnMakeOrder.Enabled = false;
+                }
+                else
+                {
+                    btnMakeOrder.Enabled = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                btnMakeOrder.Enabled = true;
+                MessageBox.Show($"Не удалось загрузить товары!\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -129,6 +136,23 @@ namespace LLC_Decoration.UI
                 {
                     cmsDel.Show();
                 }
+            }
+        }
+
+        private void lstOrders_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lstOrders.SelectedItem != null)
+                {
+                    Order selectedOrder = (Order)lstOrders.SelectedItem;
+                    string photoPath = selectedOrder.ProductPhoto;
+                    picProduct.ImageLocation = photoPath;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Не удалось загрузить изображение!\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
