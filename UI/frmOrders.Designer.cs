@@ -49,6 +49,7 @@
             this.cmsDel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьТоварToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lstOrders = new System.Windows.Forms.ListBox();
+            this.lblFIO = new System.Windows.Forms.Label();
             this.pnlUp.SuspendLayout();
             this.pnlDown.SuspendLayout();
             this.pnlLogo.SuspendLayout();
@@ -63,6 +64,7 @@
             // pnlUp
             // 
             this.pnlUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
+            this.pnlUp.Controls.Add(this.lblFIO);
             this.pnlUp.Controls.Add(this.cboPickUpPoints);
             this.pnlUp.Controls.Add(this.lblSortingDiscount);
             this.pnlUp.Dock = System.Windows.Forms.DockStyle.Top;
@@ -146,6 +148,7 @@
             this.btnMakeOrder.TabIndex = 16;
             this.btnMakeOrder.Text = "Заказать";
             this.btnMakeOrder.UseVisualStyleBackColor = false;
+            this.btnMakeOrder.Click += new System.EventHandler(this.btnMakeOrder_Click);
             // 
             // btnClose
             // 
@@ -267,6 +270,16 @@
             this.lstOrders.SelectedIndexChanged += new System.EventHandler(this.lstOrders_SelectedIndexChanged);
             this.lstOrders.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstOrders_MouseDown);
             // 
+            // lblFIO
+            // 
+            this.lblFIO.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.lblFIO.Location = new System.Drawing.Point(662, 9);
+            this.lblFIO.Name = "lblFIO";
+            this.lblFIO.Size = new System.Drawing.Size(319, 80);
+            this.lblFIO.TabIndex = 8;
+            this.lblFIO.Text = "ФИО";
+            this.lblFIO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,5 +330,6 @@
         private System.Windows.Forms.ListBox lstOrders;
         private System.Windows.Forms.Button btnMakeOrder;
         private System.Windows.Forms.Panel pnlDiscount;
+        private System.Windows.Forms.Label lblFIO;
     }
 }

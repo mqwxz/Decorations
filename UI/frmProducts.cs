@@ -44,7 +44,6 @@ namespace ООО__Украшение_.UI
                 case 3:
 
                     break;
-
                 case 4:
                     lblFIO.Text = "Добро пожаловать, Гость!\nДоступен только режим просмотра товаров";
                     break;
@@ -239,42 +238,51 @@ namespace ООО__Украшение_.UI
         private void добавитьКЗакToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnShowOrder.Visible = true;
+            string quantityInStock = dgvProducts.CurrentRow.Cells[9].Value.ToString();
             string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
             string productPhoto = dgvProducts.CurrentRow.Cells[0].Value.ToString();
             string photoPath = Path.Combine(projectDirectory, $"Resources\\Images\\Products\\{productPhoto}.jpg");
 
-            //Добавление заказа в коллекцию Order.
-            try
+            //Проверка наличия товара на складе. Если товара нет на складе, то его нельзя выбрать.
+            if(quantityInStock != "0")
             {
-                if (!File.Exists(photoPath))
+                //Добавление заказа в коллекцию Order.
+                try
                 {
-                    photoPath = Path.Combine(projectDirectory, $"Resources\\Images\\Icons and Logos\\picture.png");
+                    if (!File.Exists(photoPath))
+                    {
+                        photoPath = Path.Combine(projectDirectory, $"Resources\\Images\\Icons and Logos\\picture.png");
+                    }
+
+                    Order order = new Order
+                    {
+                        ProductArticleNumber = dgvProducts.CurrentRow.Cells[0].Value.ToString(),
+                        ProductName = dgvProducts.CurrentRow.Cells[1].Value.ToString(),
+                        ProductCost = dgvProducts.CurrentRow.Cells[3].Value.ToString(),
+                        ProductManufacturer = dgvProducts.CurrentRow.Cells[5].Value.ToString(),
+                        ProductCategory = dgvProducts.CurrentRow.Cells[7].Value.ToString(),
+                        ProductDiscountAmount = dgvProducts.CurrentRow.Cells[8].Value.ToString(),
+                        ProductDescription = dgvProducts.CurrentRow.Cells[10].Value.ToString(),
+                        ProductCostWithDiscount = dgvProducts.CurrentRow.Cells[11].Value.ToString(),
+                        ProductPhoto = photoPath
+                    };
+
+                    if (showOrders == null)
+                    {
+                        showOrders = new List<Order>();
+                    }
+
+                    showOrders.Add(order);
                 }
 
-                Order order = new Order
+                catch (Exception ex)
                 {
-                    ProductArticleNumber = dgvProducts.CurrentRow.Cells[0].Value.ToString(),
-                    ProductName = dgvProducts.CurrentRow.Cells[1].Value.ToString(),
-                    ProductCost = dgvProducts.CurrentRow.Cells[3].Value.ToString(),
-                    ProductManufacturer = dgvProducts.CurrentRow.Cells[5].Value.ToString(),
-                    ProductCategory = dgvProducts.CurrentRow.Cells[7].Value.ToString(),
-                    ProductDiscountAmount = dgvProducts.CurrentRow.Cells[8].Value.ToString(),
-                    ProductDescription = dgvProducts.CurrentRow.Cells[10].Value.ToString(),
-                    ProductCostWithDiscount = dgvProducts.CurrentRow.Cells[11].Value.ToString(),
-                    ProductPhoto = photoPath
-                };
-
-                if (showOrders == null)
-                {
-                    showOrders = new List<Order>();
+                    MessageBox.Show($"Произошёл сбой!\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                showOrders.Add(order);
             }
-
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Произошёл сбой!\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Товара нет в наличии!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

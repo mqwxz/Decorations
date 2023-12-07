@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,8 +30,22 @@ namespace LLC_Decoration.UI
             InitializeComponent();
             showOrders = orders;
             LoadDataToListBox();
-            GetCost();        
+            GetCost();
+            ShowGreetings();
         }
+
+        private void ShowGreetings()
+        {
+            if (User.UserRole == 4)
+            {
+                lblFIO.Text = "Добро пожаловать, Гость!";
+            }
+            else
+            {
+                lblFIO.Text = $"Добро пожаловать,\n{User.UserSurname} {User.UserName} {User.UserPatronymic}!";
+            }
+        }
+
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -155,5 +170,46 @@ namespace LLC_Decoration.UI
                 MessageBox.Show($"Не удалось загрузить изображение!\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnMakeOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GetCountArticles()
+        {
+            /*
+             * Изменение количества товаров из склада в столбце "ProductQuantityInStock"
+             * в зависимости от выбранного количества определённого товара по Артикулу.
+            */
+            var count =
+                    from order in showOrders
+                    group order by order.ProductArticleNumber into articles
+                    select new
+                    {
+                        ProductArticleNumber = articles.Key,
+                        Count = articles.Count(),
+                    };
+            
+            using (SqlConnection connectionString = new SqlConnection(Properties.Settings.Default.connectionString))
+            {
+                connectionString.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "GetCountArticles";
+                cmd.Connection = connectionString;
+
+                foreach (var items in count)
+                {
+                    cmd.Parameters.AddWithValue("@countArticles", items.Count);
+                    cmd.Parameters.AddWithValue("@ProductArticleNumber", items.ProductArticleNumber);
+                    cmd.ExecuteNonQuery();
+                }
+                connectionString.Close();
+            }
+        }
+
+
+
     }
 }
