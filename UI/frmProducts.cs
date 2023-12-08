@@ -47,6 +47,8 @@ namespace ООО__Украшение_.UI
                     break;
                 case 3:
                     lblFIO.Text = $"Добро пожаловать,\n{User.UserSurname} {User.UserName} {User.UserPatronymic}!";
+                    удалитьТоварToolStripMenuItem.Visible = true;
+                    добавитьТоварToolStripMenuItem.Visible = true;
                     btnWork.Visible = true;
                     break;
                 case 4:
@@ -310,6 +312,41 @@ namespace ООО__Украшение_.UI
             this.Hide();
             frmWork.ShowDialog();
             this.Show();
+        }
+
+        private void удалитьТоварToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Вы уверены, что хотите удалить данный товар? ", "Сообщение",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    using (SqlConnection connectionString = new SqlConnection(LLC_Decoration.Properties.Settings.Default.connectionString))
+                    {
+                        connectionString.Open();
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "DelProduct";
+                        cmd.Connection = connectionString;
+                        cmd.Parameters.AddWithValue("@ProductArticleNumber", dgvProducts.CurrentRow.Cells[0].Value.ToString());
+                        cmd.ExecuteNonQuery();
+                        connectionString.Close();
+
+                    }
+                    MessageBox.Show($"Товар был успешно удалён!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowProducts();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошёл сбой!\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void добавитьТоварToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGoods frmGoods = new frmGoods();
+            frmGoods.ShowDialog();
         }
     }   
 }

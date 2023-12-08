@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProducts));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlUp = new System.Windows.Forms.Panel();
             this.lblFIO = new System.Windows.Forms.Label();
             this.cboSortingDiscount = new System.Windows.Forms.ComboBox();
@@ -44,6 +44,7 @@
             this.lblSearchProduct = new System.Windows.Forms.Label();
             this.pnlDown = new System.Windows.Forms.Panel();
             this.btnShowOrder = new System.Windows.Forms.Button();
+            this.btnWork = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.picLogo = new System.Windows.Forms.PictureBox();
@@ -61,7 +62,8 @@
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.cmsAdd = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.добавитьКЗакToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnWork = new System.Windows.Forms.Button();
+            this.удалитьТоварToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьТоварToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlUp.SuspendLayout();
             this.pnlDown.SuspendLayout();
             this.pnlLogo.SuspendLayout();
@@ -210,6 +212,22 @@
             this.btnShowOrder.UseVisualStyleBackColor = false;
             this.btnShowOrder.Visible = false;
             this.btnShowOrder.Click += new System.EventHandler(this.btnShowOrder_Click);
+            // 
+            // btnWork
+            // 
+            this.btnWork.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnWork.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
+            this.btnWork.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWork.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.btnWork.Location = new System.Drawing.Point(697, 65);
+            this.btnWork.Name = "btnWork";
+            this.btnWork.Size = new System.Drawing.Size(284, 33);
+            this.btnWork.TabIndex = 18;
+            this.btnWork.Text = "Работа с заказами";
+            this.btnWork.UseVisualStyleBackColor = false;
+            this.btnWork.Visible = false;
+            this.btnWork.Click += new System.EventHandler(this.btnWork_Click);
             // 
             // btnClose
             // 
@@ -381,36 +399,36 @@
             this.dgvProducts.AllowUserToResizeRows = false;
             this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProducts.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Comic Sans MS", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Comic Sans MS", 9F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Comic Sans MS", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Comic Sans MS", 9F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProducts.Location = new System.Drawing.Point(0, 135);
             this.dgvProducts.Margin = new System.Windows.Forms.Padding(0);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Comic Sans MS", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Comic Sans MS", 9F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvProducts.Size = new System.Drawing.Size(984, 341);
             this.dgvProducts.TabIndex = 2;
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
@@ -419,33 +437,35 @@
             // cmsAdd
             // 
             this.cmsAdd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.добавитьКЗакToolStripMenuItem});
+            this.добавитьКЗакToolStripMenuItem,
+            this.удалитьТоварToolStripMenuItem,
+            this.добавитьТоварToolStripMenuItem});
             this.cmsAdd.Name = "cmsAdd";
-            this.cmsAdd.Size = new System.Drawing.Size(173, 26);
+            this.cmsAdd.Size = new System.Drawing.Size(173, 70);
             this.cmsAdd.Text = "Формирование заказа";
             // 
             // добавитьКЗакToolStripMenuItem
             // 
             this.добавитьКЗакToolStripMenuItem.Name = "добавитьКЗакToolStripMenuItem";
-            this.добавитьКЗакToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.добавитьКЗакToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.добавитьКЗакToolStripMenuItem.Text = "Добавить к заказу";
             this.добавитьКЗакToolStripMenuItem.Click += new System.EventHandler(this.добавитьКЗакToolStripMenuItem_Click);
             // 
-            // btnWork
+            // удалитьТоварToolStripMenuItem
             // 
-            this.btnWork.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnWork.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
-            this.btnWork.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWork.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.btnWork.Location = new System.Drawing.Point(697, 65);
-            this.btnWork.Name = "btnWork";
-            this.btnWork.Size = new System.Drawing.Size(284, 33);
-            this.btnWork.TabIndex = 18;
-            this.btnWork.Text = "Работа с заказами";
-            this.btnWork.UseVisualStyleBackColor = false;
-            this.btnWork.Visible = false;
-            this.btnWork.Click += new System.EventHandler(this.btnWork_Click);
+            this.удалитьТоварToolStripMenuItem.Name = "удалитьТоварToolStripMenuItem";
+            this.удалитьТоварToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.удалитьТоварToolStripMenuItem.Text = "Удалить товар";
+            this.удалитьТоварToolStripMenuItem.Visible = false;
+            this.удалитьТоварToolStripMenuItem.Click += new System.EventHandler(this.удалитьТоварToolStripMenuItem_Click);
+            // 
+            // добавитьТоварToolStripMenuItem
+            // 
+            this.добавитьТоварToolStripMenuItem.Name = "добавитьТоварToolStripMenuItem";
+            this.добавитьТоварToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.добавитьТоварToolStripMenuItem.Text = "Добавить товар";
+            this.добавитьТоварToolStripMenuItem.Visible = false;
+            this.добавитьТоварToolStripMenuItem.Click += new System.EventHandler(this.добавитьТоварToolStripMenuItem_Click);
             // 
             // frmProducts
             // 
@@ -508,5 +528,7 @@
         private System.Windows.Forms.ContextMenuStrip cmsAdd;
         private System.Windows.Forms.ToolStripMenuItem добавитьКЗакToolStripMenuItem;
         private System.Windows.Forms.Button btnWork;
+        private System.Windows.Forms.ToolStripMenuItem удалитьТоварToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьТоварToolStripMenuItem;
     }
 }

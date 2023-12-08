@@ -56,6 +56,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\frmGoods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmGoods.Designer.cs">
+      <DependentUpon>frmGoods.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmOrders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\frmGoods.resx">
+      <DependentUpon>frmGoods.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\frmOrders.resx">
       <DependentUpon>frmOrders.cs</DependentUpon>
     </EmbeddedResource>
