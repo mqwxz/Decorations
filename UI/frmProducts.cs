@@ -237,7 +237,6 @@ namespace ООО__Украшение_.UI
 
         private void добавитьКЗакToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnShowOrder.Visible = true;
             string quantityInStock = dgvProducts.CurrentRow.Cells[9].Value.ToString();
             string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
             string productPhoto = dgvProducts.CurrentRow.Cells[0].Value.ToString();
@@ -246,6 +245,7 @@ namespace ООО__Украшение_.UI
             //Проверка наличия товара на складе. Если товара нет на складе, то его нельзя выбрать.
             if(quantityInStock != "0")
             {
+                btnShowOrder.Visible = true;
                 //Добавление заказа в коллекцию Order.
                 try
                 {
@@ -283,6 +283,7 @@ namespace ООО__Украшение_.UI
             else
             {
                 MessageBox.Show("Товара нет в наличии!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
         }
 

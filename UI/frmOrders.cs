@@ -188,14 +188,11 @@ namespace LLC_Decoration.UI
                     };
 
             DateTime today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-            DateTime delivered = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-            delivered = today.AddDays(6);
             int id;
 
             if (cboPickUpPoints.SelectedValue != null)
             {
                 int pickUpPoint = (int)cboPickUpPoints.SelectedValue;
-
 
                 if (MessageBox.Show("Вы точно уверены в своём выборе? ", "Сообщение",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -203,50 +200,55 @@ namespace LLC_Decoration.UI
                     using (SqlConnection connectionString = new SqlConnection(Properties.Settings.Default.connectionString))
                     {
                         connectionString.Open();
-                        SqlCommand cmd = new SqlCommand();
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandText = "GetCountArticles";
-                        cmd.Connection = connectionString;
-
                         foreach (var items in count)
                         {
+                            SqlCommand cmd = new SqlCommand();
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.CommandText = "GetCountArticles";
+                            cmd.Connection = connectionString;
                             cmd.Parameters.AddWithValue("@countArticles", items.Count);
                             cmd.Parameters.AddWithValue("@ProductArticleNumber", items.ProductArticleNumber);
                             cmd.ExecuteNonQuery();
-                        }
+                        
 
-                        SqlCommand cmd1 = new SqlCommand();
-                        cmd1.CommandType = CommandType.StoredProcedure;
-                        cmd1.CommandText = "InsertOrder";
-                        cmd1.Connection = connectionString;
+                            SqlCommand cmd2 = new SqlCommand();
+                            cmd2.CommandType = CommandType.StoredProcedure;
+                            cmd2.CommandText = "InsertOrder";
+                            cmd2.Connection = connectionString;
 
-                        cmd1.Parameters.AddWithValue("@OrderDate", today);
-                        cmd1.Parameters.AddWithValue("@OrderDeliveryDate", delivered);
-                        cmd1.Parameters.AddWithValue("@OrderPickupPoint", pickUpPoint);
+                        
+                            cmd2.Parameters.AddWithValue("@OrderDate", today);
+                            if(items.Count < 3)
+                            {
+                                cmd2.Parameters.AddWithValue("@OrderDeliveryDate", today.AddDays(6));
+                            }
+                            else
+                            {
+                                cmd2.Parameters.AddWithValue("@OrderDeliveryDate", today.AddDays(3));
+                            }
+                            cmd2.Parameters.AddWithValue("@OrderPickupPoint", pickUpPoint);
+                            
+                            if (User.UserRole == 4)
+                            {
+                                cmd2.Parameters.AddWithValue("@OrderClient", DBNull.Value);
+                            }
+                            else
+                            {
+                                cmd2.Parameters.AddWithValue("@OrderClient", User.UserID);
+                            }
+                            id = (int)cmd2.ExecuteScalar();
 
-                        if (User.UserRole == 4)
-                        {
-                            cmd1.Parameters.AddWithValue("@OrderClient", DBNull.Value);
-                        }
-                        else
-                        {
-                            cmd1.Parameters.AddWithValue("@OrderClient", User.UserID);
-                        }
-                        id = (int)cmd1.ExecuteScalar();
 
+                            SqlCommand cmd3 = new SqlCommand();
+                            cmd3.CommandType = CommandType.StoredProcedure;
+                            cmd3.CommandText = "InsertOrderProduct";
+                            cmd3.Connection = connectionString;
 
-                        SqlCommand cmd2 = new SqlCommand();
-                        cmd2.CommandType = CommandType.StoredProcedure;
-                        cmd2.CommandText = "InsertOrderProduct";
-                        cmd2.Connection = connectionString;
+                            cmd3.Parameters.AddWithValue("@OrderId", id);
+                            cmd3.Parameters.AddWithValue("@ProductArticleNumber", items.ProductArticleNumber);
+                            cmd3.Parameters.AddWithValue("@OrderQuantity", items.Count);
 
-                        foreach (var items in count)
-                        {
-                            cmd2.Parameters.AddWithValue("@OrderId", id);
-                            cmd2.Parameters.AddWithValue("@ProductArticleNumber", items.ProductArticleNumber);
-                            cmd2.Parameters.AddWithValue("@OrderQuantity", items.Count);
-
-                            cmd2.ExecuteNonQuery();
+                            cmd3.ExecuteNonQuery();
                         }
                         connectionString.Close();
                     }
