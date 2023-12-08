@@ -94,7 +94,6 @@ namespace LLC_Decoration.UI
             {
                 //Заполнение ListBox данными о выбранных товаров пользователем.
                 lstOrders.DataSource = showOrders;
-                lstOrders.DisplayMember = "";
                 lstOrders.DisplayMember = "Values";
 
                 GetCost();
@@ -118,11 +117,12 @@ namespace LLC_Decoration.UI
 
         private void удалитьТоварToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (lstOrders.Items.Count != 0)
+            if (lstOrders.Items.Count != -1)
             {
                 int selectedIndex = lstOrders.SelectedIndex;
                 showOrders.RemoveAt(selectedIndex);
             }
+            lstOrders.DataSource = null;
             LoadDataToListBox();
         }
 

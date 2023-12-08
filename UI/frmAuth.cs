@@ -63,8 +63,8 @@ namespace LLC_Decoration
 
         private void btnAuth_Click(object sender, EventArgs e)
         {
-            string login = txtLogin.Text.Trim();
-            string password = txtPassword.Text.Trim();
+            string login = txtLogin.Text;
+            string password = txtPassword.Text;
 
             if (String.IsNullOrEmpty(txtLogin.Text) || String.IsNullOrEmpty(txtPassword.Text))
             {
