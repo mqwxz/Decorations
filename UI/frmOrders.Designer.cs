@@ -50,6 +50,7 @@
             this.удалитьТоварToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lstOrders = new System.Windows.Forms.ListBox();
             this.lblFIO = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlUp.SuspendLayout();
             this.pnlDown.SuspendLayout();
             this.pnlLogo.SuspendLayout();
@@ -130,6 +131,7 @@
             // pnlDiscount
             // 
             this.pnlDiscount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlDiscount.Controls.Add(this.button1);
             this.pnlDiscount.Controls.Add(this.btnMakeOrder);
             this.pnlDiscount.Controls.Add(this.btnClose);
             this.pnlDiscount.Location = new System.Drawing.Point(697, 3);
@@ -143,8 +145,9 @@
             this.btnMakeOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMakeOrder.Font = new System.Drawing.Font("Comic Sans MS", 12F);
             this.btnMakeOrder.Location = new System.Drawing.Point(3, 3);
+            this.btnMakeOrder.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
             this.btnMakeOrder.Name = "btnMakeOrder";
-            this.btnMakeOrder.Size = new System.Drawing.Size(274, 58);
+            this.btnMakeOrder.Size = new System.Drawing.Size(274, 38);
             this.btnMakeOrder.TabIndex = 16;
             this.btnMakeOrder.Text = "Заказать";
             this.btnMakeOrder.UseVisualStyleBackColor = false;
@@ -155,9 +158,10 @@
             this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.btnClose.Location = new System.Drawing.Point(3, 62);
+            this.btnClose.Location = new System.Drawing.Point(3, 81);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 1, 3, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(274, 60);
+            this.btnClose.Size = new System.Drawing.Size(274, 41);
             this.btnClose.TabIndex = 15;
             this.btnClose.Text = "Выход";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -280,6 +284,19 @@
             this.lblFIO.Text = "ФИО";
             this.lblFIO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.button1.Location = new System.Drawing.Point(3, 43);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(274, 36);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Получить талон";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // frmOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,5 +348,6 @@
         private System.Windows.Forms.Button btnMakeOrder;
         private System.Windows.Forms.Panel pnlDiscount;
         private System.Windows.Forms.Label lblFIO;
+        private System.Windows.Forms.Button button1;
     }
 }
