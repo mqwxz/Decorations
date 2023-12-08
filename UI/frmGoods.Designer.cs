@@ -30,14 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGoods));
             this.pnlUp = new System.Windows.Forms.Panel();
+            this.lblPath = new System.Windows.Forms.Label();
             this.lblArticle = new System.Windows.Forms.Label();
             this.pnlDown = new System.Windows.Forms.Panel();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.pnlDiscount = new System.Windows.Forms.Panel();
+            this.btnSavePhoto = new System.Windows.Forms.Button();
+            this.btnPhoto = new System.Windows.Forms.Button();
+            this.btnCostWithDiscount = new System.Windows.Forms.Button();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pnlPhotoProduct = new System.Windows.Forms.Panel();
+            this.picProduct = new System.Windows.Forms.PictureBox();
             this.txtArticle = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -61,9 +66,7 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.txtWithDiscount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnCostWithDiscount = new System.Windows.Forms.Button();
-            this.picProduct = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.pnlUp.SuspendLayout();
             this.pnlDown.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -75,11 +78,25 @@
             // pnlUp
             // 
             this.pnlUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
+            this.pnlUp.Controls.Add(this.lblPath);
             this.pnlUp.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUp.Location = new System.Drawing.Point(0, 0);
             this.pnlUp.Name = "pnlUp";
             this.pnlUp.Size = new System.Drawing.Size(812, 135);
             this.pnlUp.TabIndex = 1;
+            // 
+            // lblPath
+            // 
+            this.lblPath.AutoSize = true;
+            this.lblPath.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.lblPath.Location = new System.Drawing.Point(768, 102);
+            this.lblPath.Name = "lblPath";
+            this.lblPath.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblPath.Size = new System.Drawing.Size(32, 23);
+            this.lblPath.TabIndex = 26;
+            this.lblPath.Text = "pic";
+            this.lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblPath.Visible = false;
             // 
             // lblArticle
             // 
@@ -127,7 +144,8 @@
             // pnlDiscount
             // 
             this.pnlDiscount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlDiscount.Controls.Add(this.button2);
+            this.pnlDiscount.Controls.Add(this.btnSavePhoto);
+            this.pnlDiscount.Controls.Add(this.btnPhoto);
             this.pnlDiscount.Controls.Add(this.btnCostWithDiscount);
             this.pnlDiscount.Controls.Add(this.btnAddProduct);
             this.pnlDiscount.Controls.Add(this.btnClose);
@@ -135,6 +153,50 @@
             this.pnlDiscount.Name = "pnlDiscount";
             this.pnlDiscount.Size = new System.Drawing.Size(450, 129);
             this.pnlDiscount.TabIndex = 12;
+            // 
+            // btnSavePhoto
+            // 
+            this.btnSavePhoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
+            this.btnSavePhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSavePhoto.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.btnSavePhoto.Location = new System.Drawing.Point(221, 1);
+            this.btnSavePhoto.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnSavePhoto.Name = "btnSavePhoto";
+            this.btnSavePhoto.Size = new System.Drawing.Size(222, 36);
+            this.btnSavePhoto.TabIndex = 21;
+            this.btnSavePhoto.Text = "Сохранить фото";
+            this.btnSavePhoto.UseVisualStyleBackColor = false;
+            this.btnSavePhoto.Visible = false;
+            this.btnSavePhoto.Click += new System.EventHandler(this.btnSavePhoto_Click);
+            // 
+            // btnPhoto
+            // 
+            this.btnPhoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
+            this.btnPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPhoto.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.btnPhoto.Location = new System.Drawing.Point(3, 1);
+            this.btnPhoto.Margin = new System.Windows.Forms.Padding(3, 1, 0, 1);
+            this.btnPhoto.Name = "btnPhoto";
+            this.btnPhoto.Size = new System.Drawing.Size(215, 36);
+            this.btnPhoto.TabIndex = 20;
+            this.btnPhoto.Text = "Загрузить фото";
+            this.btnPhoto.UseVisualStyleBackColor = false;
+            this.btnPhoto.Visible = false;
+            this.btnPhoto.Click += new System.EventHandler(this.btnPhoto_Click);
+            // 
+            // btnCostWithDiscount
+            // 
+            this.btnCostWithDiscount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
+            this.btnCostWithDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCostWithDiscount.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.btnCostWithDiscount.Location = new System.Drawing.Point(3, 38);
+            this.btnCostWithDiscount.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnCostWithDiscount.Name = "btnCostWithDiscount";
+            this.btnCostWithDiscount.Size = new System.Drawing.Size(440, 41);
+            this.btnCostWithDiscount.TabIndex = 18;
+            this.btnCostWithDiscount.Text = "Подсчитать стоимость со скидкой";
+            this.btnCostWithDiscount.UseVisualStyleBackColor = false;
+            this.btnCostWithDiscount.Click += new System.EventHandler(this.btnCostWithDiscount_Click);
             // 
             // btnAddProduct
             // 
@@ -172,6 +234,18 @@
             this.pnlPhotoProduct.Name = "pnlPhotoProduct";
             this.pnlPhotoProduct.Size = new System.Drawing.Size(167, 129);
             this.pnlPhotoProduct.TabIndex = 0;
+            // 
+            // picProduct
+            // 
+            this.picProduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.picProduct.Image = ((System.Drawing.Image)(resources.GetObject("picProduct.Image")));
+            this.picProduct.Location = new System.Drawing.Point(3, 3);
+            this.picProduct.Name = "picProduct";
+            this.picProduct.Size = new System.Drawing.Size(157, 119);
+            this.picProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picProduct.TabIndex = 5;
+            this.picProduct.TabStop = false;
             // 
             // txtArticle
             // 
@@ -394,46 +468,6 @@
             this.label2.TabIndex = 24;
             this.label2.Text = "Стоимость со скидкой";
             // 
-            // btnCostWithDiscount
-            // 
-            this.btnCostWithDiscount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
-            this.btnCostWithDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCostWithDiscount.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.btnCostWithDiscount.Location = new System.Drawing.Point(3, 38);
-            this.btnCostWithDiscount.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.btnCostWithDiscount.Name = "btnCostWithDiscount";
-            this.btnCostWithDiscount.Size = new System.Drawing.Size(440, 41);
-            this.btnCostWithDiscount.TabIndex = 18;
-            this.btnCostWithDiscount.Text = "Подсчитать стоимость со скидкой";
-            this.btnCostWithDiscount.UseVisualStyleBackColor = false;
-            this.btnCostWithDiscount.Click += new System.EventHandler(this.btnCostWithDiscount_Click);
-            // 
-            // picProduct
-            // 
-            this.picProduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picProduct.Image = ((System.Drawing.Image)(resources.GetObject("picProduct.Image")));
-            this.picProduct.Location = new System.Drawing.Point(3, 3);
-            this.picProduct.Name = "picProduct";
-            this.picProduct.Size = new System.Drawing.Size(157, 119);
-            this.picProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picProduct.TabIndex = 5;
-            this.picProduct.TabStop = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.button2.Location = new System.Drawing.Point(3, 1);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(440, 36);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Добавить фотографию";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // frmGoods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -472,6 +506,8 @@
             this.Name = "frmGoods";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление товара";
+            this.pnlUp.ResumeLayout(false);
+            this.pnlUp.PerformLayout();
             this.pnlDown.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
@@ -518,7 +554,9 @@
         private System.Windows.Forms.TextBox txtWithDiscount;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCostWithDiscount;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPhoto;
         private System.Windows.Forms.PictureBox picProduct;
+        private System.Windows.Forms.Label lblPath;
+        private System.Windows.Forms.Button btnSavePhoto;
     }
 }

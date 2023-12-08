@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Odbc;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +62,8 @@ namespace LLC_Decoration.UI
 
                     }
                     MessageBox.Show($"Товар был успешно добавление!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnPhoto.Visible = true;
+                    btnSavePhoto.Visible = true;
                 }
                 catch (Exception ex)
                 {
@@ -75,9 +79,51 @@ namespace LLC_Decoration.UI
             txtWithDiscount.Text = (cost - cost * discount / 100).ToString();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnPhoto_Click(object sender, EventArgs e)
         {
+            try
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.InitialDirectory = "C:\\";
+                ofd.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+                ofd.FilterIndex = 2;
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    picProduct.Image = Image.FromFile(ofd.FileName);
+                    lblPath.Text = ofd.SafeFileName.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошёл сбой!\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }   
+        }
 
+        private void btnSavePhoto_Click(object sender, EventArgs e)
+        {
+            if (picProduct.Image != null)
+            {
+                MemoryStream memoryStream = new MemoryStream();
+                picProduct.Image.Save(memoryStream, picProduct.Image.RawFormat);
+                byte[] a = memoryStream.GetBuffer();
+                memoryStream.Close();
+
+                using (SqlConnection connectionString = new SqlConnection(LLC_Decoration.Properties.Settings.Default.connectionString))
+                {
+                    connectionString.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "InsertPhoto";
+                    cmd.Connection = connectionString;
+                    cmd.Parameters.AddWithValue("@ProductPhoto", a);
+                    cmd.Parameters.AddWithValue("@ProductArticleNumber", txtArticle.Text.ToString());
+                    cmd.ExecuteNonQuery();
+                    connectionString.Close();
+                    lblPath.Text = "";
+                    picProduct.Image = null;
+                }
+                MessageBox.Show($"Фото товара было успешно обновлено!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
