@@ -51,6 +51,7 @@
             this.cmsDel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьТоварToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lstOrders = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlUp.SuspendLayout();
             this.pnlDown.SuspendLayout();
             this.pnlLogo.SuspendLayout();
@@ -195,6 +196,7 @@
             // pnlProductDescription
             // 
             this.pnlProductDescription.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlProductDescription.Controls.Add(this.label1);
             this.pnlProductDescription.Controls.Add(this.lblCostDiscounts);
             this.pnlProductDescription.Controls.Add(this.lblCostS);
             this.pnlProductDescription.Controls.Add(this.lblCostWithDiscount);
@@ -209,9 +211,9 @@
             this.lblCostDiscounts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCostDiscounts.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblCostDiscounts.Location = new System.Drawing.Point(197, 49);
+            this.lblCostDiscounts.Location = new System.Drawing.Point(207, 49);
             this.lblCostDiscounts.Name = "lblCostDiscounts";
-            this.lblCostDiscounts.Size = new System.Drawing.Size(128, 23);
+            this.lblCostDiscounts.Size = new System.Drawing.Size(33, 23);
             this.lblCostDiscounts.TabIndex = 15;
             this.lblCostDiscounts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -299,6 +301,18 @@
             this.lstOrders.SelectedIndexChanged += new System.EventHandler(this.lstOrders_SelectedIndexChanged);
             this.lstOrders.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstOrders_MouseDown);
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.label1.Location = new System.Drawing.Point(226, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 23);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "%";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,5 +365,6 @@
         private System.Windows.Forms.Panel pnlDiscount;
         private System.Windows.Forms.Label lblFIO;
         private System.Windows.Forms.Button btnTicket;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -283,7 +283,6 @@ namespace ООО__Украшение_.UI
             else
             {
                 MessageBox.Show("Товара нет в наличии!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
         }
 

@@ -139,7 +139,7 @@ namespace LLC_Decoration.UI
                 finalSumDiscountAmount += Convert.ToInt32(order.ProductDiscountAmount);
             }
             lblCostWithDiscount.Text = $"{finalSumWithDiscount}";
-            lblCostDiscounts.Text = $"{finalSumDiscountAmount}%";
+            lblCostDiscounts.Text = $"{finalSumDiscountAmount}";
         }
 
         private void lstOrders_MouseDown(object sender, MouseEventArgs e)
@@ -193,6 +193,7 @@ namespace LLC_Decoration.UI
             if (cboPickUpPoints.SelectedValue != null)
             {
                 int pickUpPoint = (int)cboPickUpPoints.SelectedValue;
+                Order.OrderDate = cboPickUpPoints.Text;
 
                 if (MessageBox.Show("Вы точно уверены в своём выборе? ", "Сообщение",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -209,16 +210,16 @@ namespace LLC_Decoration.UI
                             cmd.Parameters.AddWithValue("@countArticles", items.Count);
                             cmd.Parameters.AddWithValue("@ProductArticleNumber", items.ProductArticleNumber);
                             cmd.ExecuteNonQuery();
-                        
+
 
                             SqlCommand cmd2 = new SqlCommand();
                             cmd2.CommandType = CommandType.StoredProcedure;
                             cmd2.CommandText = "InsertOrder";
                             cmd2.Connection = connectionString;
 
-                        
+
                             cmd2.Parameters.AddWithValue("@OrderDate", today);
-                            if(items.Count < 3)
+                            if (items.Count < 3)
                             {
                                 cmd2.Parameters.AddWithValue("@OrderDeliveryDate", today.AddDays(6));
                             }
@@ -227,7 +228,9 @@ namespace LLC_Decoration.UI
                                 cmd2.Parameters.AddWithValue("@OrderDeliveryDate", today.AddDays(3));
                             }
                             cmd2.Parameters.AddWithValue("@OrderPickupPoint", pickUpPoint);
-                            
+                            cmd2.Parameters.AddWithValue("@OrderCost", Convert.ToDecimal(lblCostWithDiscount.Text));
+                            cmd2.Parameters.AddWithValue("@OrderDiscountAmount", Convert.ToInt32(lblCostDiscounts.Text));
+
                             if (User.UserRole == 4)
                             {
                                 cmd2.Parameters.AddWithValue("@OrderClient", DBNull.Value);
