@@ -39,11 +39,11 @@ namespace LLC_Decoration.UI
         {
             if (User.UserRole == 4)
             {
-                lblFIO.Text = "Добро пожаловать, Гость!";
+                lblFIO.Text = "Вы находитесь в гостевом режиме!";
             }
             else
             {
-                lblFIO.Text = $"Добро пожаловать,\n{User.UserSurname} {User.UserName} {User.UserPatronymic}!";
+                lblFIO.Text = $"Учетная запись: \n{User.UserSurname} {User.UserName} {User.UserPatronymic}!";
             }
         }
 
