@@ -31,12 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrders));
             this.pnlUp = new System.Windows.Forms.Panel();
+            this.lblFIO = new System.Windows.Forms.Label();
             this.cboPickUpPoints = new System.Windows.Forms.ComboBox();
             this.lblSortingDiscount = new System.Windows.Forms.Label();
             this.pnlDown = new System.Windows.Forms.Panel();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.pnlDiscount = new System.Windows.Forms.Panel();
+            this.btnTicket = new System.Windows.Forms.Button();
             this.btnMakeOrder = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pnlProductDescription = new System.Windows.Forms.Panel();
@@ -49,8 +51,6 @@
             this.cmsDel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьТоварToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lstOrders = new System.Windows.Forms.ListBox();
-            this.lblFIO = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlUp.SuspendLayout();
             this.pnlDown.SuspendLayout();
             this.pnlLogo.SuspendLayout();
@@ -73,6 +73,16 @@
             this.pnlUp.Name = "pnlUp";
             this.pnlUp.Size = new System.Drawing.Size(984, 135);
             this.pnlUp.TabIndex = 1;
+            // 
+            // lblFIO
+            // 
+            this.lblFIO.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.lblFIO.Location = new System.Drawing.Point(662, 9);
+            this.lblFIO.Name = "lblFIO";
+            this.lblFIO.Size = new System.Drawing.Size(319, 80);
+            this.lblFIO.TabIndex = 8;
+            this.lblFIO.Text = "ФИО";
+            this.lblFIO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cboPickUpPoints
             // 
@@ -131,13 +141,28 @@
             // pnlDiscount
             // 
             this.pnlDiscount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlDiscount.Controls.Add(this.button1);
+            this.pnlDiscount.Controls.Add(this.btnTicket);
             this.pnlDiscount.Controls.Add(this.btnMakeOrder);
             this.pnlDiscount.Controls.Add(this.btnClose);
             this.pnlDiscount.Location = new System.Drawing.Point(697, 3);
             this.pnlDiscount.Name = "pnlDiscount";
             this.pnlDiscount.Size = new System.Drawing.Size(284, 129);
             this.pnlDiscount.TabIndex = 12;
+            // 
+            // btnTicket
+            // 
+            this.btnTicket.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
+            this.btnTicket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTicket.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.btnTicket.Location = new System.Drawing.Point(3, 43);
+            this.btnTicket.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnTicket.Name = "btnTicket";
+            this.btnTicket.Size = new System.Drawing.Size(274, 36);
+            this.btnTicket.TabIndex = 17;
+            this.btnTicket.Text = "Получить талон";
+            this.btnTicket.UseVisualStyleBackColor = false;
+            this.btnTicket.Visible = false;
+            this.btnTicket.Click += new System.EventHandler(this.btnTicket_Click);
             // 
             // btnMakeOrder
             // 
@@ -274,29 +299,6 @@
             this.lstOrders.SelectedIndexChanged += new System.EventHandler(this.lstOrders_SelectedIndexChanged);
             this.lstOrders.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstOrders_MouseDown);
             // 
-            // lblFIO
-            // 
-            this.lblFIO.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblFIO.Location = new System.Drawing.Point(662, 9);
-            this.lblFIO.Name = "lblFIO";
-            this.lblFIO.Size = new System.Drawing.Size(319, 80);
-            this.lblFIO.TabIndex = 8;
-            this.lblFIO.Text = "ФИО";
-            this.lblFIO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.button1.Location = new System.Drawing.Point(3, 43);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(274, 36);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Получить талон";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // frmOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,6 +350,6 @@
         private System.Windows.Forms.Button btnMakeOrder;
         private System.Windows.Forms.Panel pnlDiscount;
         private System.Windows.Forms.Label lblFIO;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTicket;
     }
 }

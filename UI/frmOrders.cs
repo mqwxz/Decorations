@@ -252,7 +252,8 @@ namespace LLC_Decoration.UI
                         }
                         connectionString.Close();
                     }
-                    MessageBox.Show($"Ваш заказ принят!\nОжидайте доставку.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Ваш заказ принят!\nМожете получить свой талон.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnTicket.Visible = true;
                 }
             }
             else
@@ -264,6 +265,13 @@ namespace LLC_Decoration.UI
         private void btnMakeOrder_Click(object sender, EventArgs e)
         {
             InsertQuery();
+        }
+
+        private void btnTicket_Click(object sender, EventArgs e)
+        {
+            frmTicket frmTicket = new frmTicket(showOrders);
+            frmTicket.ShowDialog();
+            this.Show();
         }
     }
 }
