@@ -17,6 +17,7 @@ using LLC_Decoration.Classes;
 using ООО__Украшение_.UI;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace LLC_Decoration.UI
 {
@@ -129,12 +130,12 @@ namespace LLC_Decoration.UI
         private void GetCost()
         {
             //Подсчёт суммы заказа, подсчёт скидки заказа.
-            double finalSumWithDiscount = 0;
+            decimal finalSumWithDiscount = 0;
             int finalSumDiscountAmount = 0;
 
             foreach (Order order in showOrders)
             {
-                finalSumWithDiscount += Convert.ToDouble(order.ProductCostWithDiscount);
+                finalSumWithDiscount += Convert.ToDecimal(order.ProductCostWithDiscount);
                 finalSumDiscountAmount += Convert.ToInt32(order.ProductDiscountAmount);
             }
             lblCostWithDiscount.Text = $"{finalSumWithDiscount}";
@@ -173,10 +174,10 @@ namespace LLC_Decoration.UI
 
         private void btnMakeOrder_Click(object sender, EventArgs e)
         {
-
+            InsertQuery();
         }
 
-        private void GetCountArticles()
+        private void InsertQuery()
         {
             /*
              * Изменение количества товаров из склада в столбце "ProductQuantityInStock"
@@ -190,26 +191,72 @@ namespace LLC_Decoration.UI
                         ProductArticleNumber = articles.Key,
                         Count = articles.Count(),
                     };
-            
-            using (SqlConnection connectionString = new SqlConnection(Properties.Settings.Default.connectionString))
-            {
-                connectionString.Open();
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "GetCountArticles";
-                cmd.Connection = connectionString;
 
-                foreach (var items in count)
+            DateTime today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            DateTime delivered = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            delivered = today.AddDays(6);
+            int id;
+
+            if (cboPickUpPoints.SelectedValue != null)
+            {
+                int pickUpPoint = (int)cboPickUpPoints.SelectedValue;
+
+                using (SqlConnection connectionString = new SqlConnection(Properties.Settings.Default.connectionString))
                 {
-                    cmd.Parameters.AddWithValue("@countArticles", items.Count);
-                    cmd.Parameters.AddWithValue("@ProductArticleNumber", items.ProductArticleNumber);
-                    cmd.ExecuteNonQuery();
+                    connectionString.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "GetCountArticles";
+                    cmd.Connection = connectionString;
+
+                    foreach (var items in count)
+                    {
+                        cmd.Parameters.AddWithValue("@countArticles", items.Count);
+                        cmd.Parameters.AddWithValue("@ProductArticleNumber", items.ProductArticleNumber);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    SqlCommand cmd1 = new SqlCommand();
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.CommandText = "InsertOrder";
+                    cmd1.Connection = connectionString;
+
+                    cmd1.Parameters.AddWithValue("@OrderDate", today);
+                    cmd1.Parameters.AddWithValue("@OrderDeliveryDate", delivered);
+                    cmd1.Parameters.AddWithValue("@OrderPickupPoint", pickUpPoint);
+
+                    if (User.UserRole == 4)
+                    {
+                        cmd1.Parameters.AddWithValue("@OrderClient", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd1.Parameters.AddWithValue("@OrderClient", User.UserID);
+                    }
+                    id = (int)cmd1.ExecuteScalar();
+
+
+                    SqlCommand cmd2 = new SqlCommand();
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    cmd2.CommandText = "InsertOrderProduct";
+                    cmd2.Connection = connectionString;
+
+                    foreach (var items in count)
+                    {
+                        cmd2.Parameters.AddWithValue("@OrderId", id);
+                        cmd2.Parameters.AddWithValue("@ProductArticleNumber", items.ProductArticleNumber);
+                        cmd2.Parameters.AddWithValue("@OrderQuantity", items.Count);
+
+                        cmd2.ExecuteNonQuery();
+                    }
+                    connectionString.Close();
                 }
-                connectionString.Close();
+            }
+            else
+            {
+                MessageBox.Show("Для начала выберите пункт выдачи!", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-
-
     }
 }
+
