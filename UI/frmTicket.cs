@@ -22,7 +22,7 @@ namespace LLC_Decoration.UI
             InitializeComponent();
             showOrders = orders;
             LoadDataToListBox();
-            GetCost();
+            GetData();
         }
 
         private void LoadDataToListBox()
@@ -31,7 +31,7 @@ namespace LLC_Decoration.UI
             lstTicket.DataSource = showOrders;
         }
 
-        private void GetCost()
+        private void GetData()
         {
             //Подсчёт суммы заказа, подсчёт скидки заказа.
             decimal finalSumWithDiscount = 0;
@@ -44,8 +44,9 @@ namespace LLC_Decoration.UI
             }
             lblCostWithDiscount.Text = $"Сумма заказа: {finalSumWithDiscount}";
             lblCostDiscounts.Text = $"Сумма скидки: {finalSumDiscountAmount}%";
-
-            lblPickUpPoint.Text = $"Пункт выдачи: {Order.OrderDate}";
+            lblPickUpPoint.Text = $"Пункт выдачи: {Order.OrderPickUpPoint}";
+            lblOrderDate.Text = $"Дата заказа: {Order.OrderDate.ToString("D")}";
+            lblOrderCode.Text = $"Код заказа\n {Order.OrderCode}";
         }
     }
 }

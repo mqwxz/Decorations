@@ -19,7 +19,10 @@ namespace LLC_Decoration.Classes
         public string ProductDescription { get; set; }
         public string ProductCostWithDiscount { get; set; }
         public string ProductPhoto { get; set; }
-        public static string OrderDate { get; set; }
+        public static string OrderPickUpPoint { get; set; }
+        public static DateTime OrderDate { get; set; }
+        public static string OrderCode { get; set; }
+
 
         public string Values => $"{ProductArticleNumber} | Товар: {ProductName} | Производитель: {ProductManufacturer} | Категория: {ProductCategory} " +
             $"| Скидка: {ProductDiscountAmount}% | Итоговая стоимость: {ProductCostWithDiscount}";

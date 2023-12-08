@@ -189,11 +189,13 @@ namespace LLC_Decoration.UI
 
             DateTime today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             int id;
+            int orderCode;
 
             if (cboPickUpPoints.SelectedValue != null)
             {
                 int pickUpPoint = (int)cboPickUpPoints.SelectedValue;
-                Order.OrderDate = cboPickUpPoints.Text;
+                Order.OrderPickUpPoint = cboPickUpPoints.Text;
+                Order.OrderDate = today;
 
                 if (MessageBox.Show("Вы точно уверены в своём выборе? ", "Сообщение",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -210,6 +212,14 @@ namespace LLC_Decoration.UI
                             cmd.Parameters.AddWithValue("@countArticles", items.Count);
                             cmd.Parameters.AddWithValue("@ProductArticleNumber", items.ProductArticleNumber);
                             cmd.ExecuteNonQuery();
+
+
+                            SqlCommand cmd4 = new SqlCommand();
+                            cmd4.CommandType = CommandType.StoredProcedure;
+                            cmd4.CommandText = "GetMaxOrderCode";
+                            cmd4.Connection = connectionString;
+                            orderCode = (int)cmd4.ExecuteScalar();
+                            Order.OrderCode = (orderCode + 1).ToString();
 
 
                             SqlCommand cmd2 = new SqlCommand();
@@ -250,7 +260,6 @@ namespace LLC_Decoration.UI
                             cmd3.Parameters.AddWithValue("@OrderId", id);
                             cmd3.Parameters.AddWithValue("@ProductArticleNumber", items.ProductArticleNumber);
                             cmd3.Parameters.AddWithValue("@OrderQuantity", items.Count);
-
                             cmd3.ExecuteNonQuery();
                         }
                         connectionString.Close();
