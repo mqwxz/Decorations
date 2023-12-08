@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LLC_Decoration.UI
 {
-    public partial class frmGoods : Form
+    public partial class frmWork : Form
     {
-        public frmGoods()
+        public frmWork()
         {
             InitializeComponent();
         }

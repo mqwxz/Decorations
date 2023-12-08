@@ -61,6 +61,7 @@
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.cmsAdd = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.добавитьКЗакToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnWork = new System.Windows.Forms.Button();
             this.pnlUp.SuspendLayout();
             this.pnlDown.SuspendLayout();
             this.pnlLogo.SuspendLayout();
@@ -181,6 +182,7 @@
             // 
             this.pnlDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
             this.pnlDown.Controls.Add(this.btnShowOrder);
+            this.pnlDown.Controls.Add(this.btnWork);
             this.pnlDown.Controls.Add(this.btnClose);
             this.pnlDown.Controls.Add(this.pnlLogo);
             this.pnlDown.Controls.Add(this.pnlDiscount);
@@ -199,9 +201,10 @@
             this.btnShowOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
             this.btnShowOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowOrder.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.btnShowOrder.Location = new System.Drawing.Point(697, 64);
+            this.btnShowOrder.Location = new System.Drawing.Point(697, 99);
+            this.btnShowOrder.Margin = new System.Windows.Forms.Padding(3, 3, 1, 3);
             this.btnShowOrder.Name = "btnShowOrder";
-            this.btnShowOrder.Size = new System.Drawing.Size(284, 33);
+            this.btnShowOrder.Size = new System.Drawing.Size(186, 33);
             this.btnShowOrder.TabIndex = 17;
             this.btnShowOrder.Text = "Просмотр заказа";
             this.btnShowOrder.UseVisualStyleBackColor = false;
@@ -213,9 +216,10 @@
             this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.btnClose.Location = new System.Drawing.Point(886, 99);
+            this.btnClose.Location = new System.Drawing.Point(884, 99);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(95, 33);
+            this.btnClose.Size = new System.Drawing.Size(97, 33);
             this.btnClose.TabIndex = 15;
             this.btnClose.Text = "Выход";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -427,6 +431,22 @@
             this.добавитьКЗакToolStripMenuItem.Text = "Добавить к заказу";
             this.добавитьКЗакToolStripMenuItem.Click += new System.EventHandler(this.добавитьКЗакToolStripMenuItem_Click);
             // 
+            // btnWork
+            // 
+            this.btnWork.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnWork.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
+            this.btnWork.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWork.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.btnWork.Location = new System.Drawing.Point(697, 65);
+            this.btnWork.Name = "btnWork";
+            this.btnWork.Size = new System.Drawing.Size(284, 33);
+            this.btnWork.TabIndex = 18;
+            this.btnWork.Text = "Работа с заказами";
+            this.btnWork.UseVisualStyleBackColor = false;
+            this.btnWork.Visible = false;
+            this.btnWork.Click += new System.EventHandler(this.btnWork_Click);
+            // 
             // frmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -487,5 +507,6 @@
         private System.Windows.Forms.Label lblOut;
         private System.Windows.Forms.ContextMenuStrip cmsAdd;
         private System.Windows.Forms.ToolStripMenuItem добавитьКЗакToolStripMenuItem;
+        private System.Windows.Forms.Button btnWork;
     }
 }

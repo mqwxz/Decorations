@@ -56,12 +56,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\frmGoods.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\frmGoods.Designer.cs">
-      <DependentUpon>frmGoods.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\frmOrders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +73,12 @@
     </Compile>
     <Compile Include="UI\frmTicket.Designer.cs">
       <DependentUpon>frmTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmWork.Designer.cs">
+      <DependentUpon>frmWork.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UI\frmAuth.resx">
       <DependentUpon>frmAuth.cs</DependentUpon>
@@ -101,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmTicket.resx">
       <DependentUpon>frmTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmWork.resx">
+      <DependentUpon>frmWork.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

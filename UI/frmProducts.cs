@@ -38,17 +38,19 @@ namespace ООО__Украшение_.UI
             //Отображение данных и возможностей в зависимости от роли пользователя.
             switch (User.UserRole)
             {
+                case 1:
+                    lblFIO.Text = $"Добро пожаловать,\n{User.UserSurname} {User.UserName} {User.UserPatronymic}!";
+                    break;
                 case 2:
-
+                    lblFIO.Text = $"Добро пожаловать,\n{User.UserSurname} {User.UserName} {User.UserPatronymic}!";
+                    btnWork.Visible = true;
                     break;
                 case 3:
-
+                    lblFIO.Text = $"Добро пожаловать,\n{User.UserSurname} {User.UserName} {User.UserPatronymic}!";
+                    btnWork.Visible = true;
                     break;
                 case 4:
                     lblFIO.Text = "Добро пожаловать, Гость!\nДоступен только режим просмотра товаров";
-                    break;
-                default:
-                    lblFIO.Text = $"Добро пожаловать,\n{User.UserSurname} {User.UserName} {User.UserPatronymic}!";
                     break;
             }
         }
@@ -300,6 +302,14 @@ namespace ООО__Украшение_.UI
             {
                 btnShowOrder.Visible = false;
             }
+        }
+
+        private void btnWork_Click(object sender, EventArgs e)
+        {
+            frmWork frmWork = new frmWork();
+            this.Hide();
+            frmWork.ShowDialog();
+            this.Show();
         }
     }   
 }
