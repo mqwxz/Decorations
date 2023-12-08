@@ -5,9 +5,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LLC_Decoration.Classes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace LLC_Decoration.UI
 {
@@ -70,15 +74,15 @@ namespace LLC_Decoration.UI
                         }
 
                         //Если хотя бы одного товара нет на складе, то строка должна быть выделена цветом.
-                        if(Convert.ToInt32(row.Cells[6].Value) <= 0)
+                        if (Convert.ToInt32(row.Cells[6].Value) <= 0)
                         {
                             row.DefaultCellStyle.BackColor = Color.FromArgb(255, 140, 0);
                         }
                     }
                 }
-                
+
                 /*
-                 * Catch пустой, т.к. постоянно вылазит ошибка с (DBNull). 
+                 * Catch пустой (так нельзя делать), но постоянно вылазит ошибка с (DBNull). 
                  * Возможно это связано с ФИО, т.к. они не могут быть NULL или другие поля.
                 */
 
@@ -111,8 +115,53 @@ namespace LLC_Decoration.UI
             }
             catch
             {
-                MessageBox.Show("Для начала выберите диапозон по размеру суммарной скидки!", 
+                MessageBox.Show("Для начала выберите диапозон по размеру суммарной скидки!",
                     "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateOrder();
+            ShowOrdersMA();
+        }
+
+        private void UpdateOrder()
+        {
+            try
+            {
+                using (SqlConnection connectionString = new SqlConnection(Properties.Settings.Default.connectionString))
+                {
+                    connectionString.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "UpdateOrder";
+                    cmd.Connection = connectionString;
+                    cmd.Parameters.AddWithValue("@OrderStatus", cboStatus.SelectedItem);
+                    cmd.Parameters.AddWithValue("@OrderDeliveryDate", dtpOrder.Value.Date);
+                    cmd.Parameters.AddWithValue("@OrderCode", dgvOrdersMA.CurrentRow.Cells[0].Value.ToString());
+                    cmd.ExecuteNonQuery();
+                    connectionString.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошёл сбой!\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvOrdersMA_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int currentRow = e.RowIndex;
+
+            if (e.Button == MouseButtons.Left)
+            {
+                if (currentRow >= 0)
+                {
+                    dgvOrdersMA.Rows[currentRow].Selected = true;
+                    cboStatus.Text = dgvOrdersMA.CurrentRow.Cells[11].Value.ToString().Trim();
+                    dtpOrder.Text = dgvOrdersMA.CurrentRow.Cells[8].Value.ToString().Trim();
+                }
             }
         }
     }

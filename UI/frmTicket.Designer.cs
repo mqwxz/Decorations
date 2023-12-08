@@ -34,13 +34,13 @@
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.lblShopName = new System.Windows.Forms.Label();
             this.pnlDown = new System.Windows.Forms.Panel();
-            this.lstTicket = new System.Windows.Forms.ListBox();
             this.pnlBottom = new System.Windows.Forms.Panel();
-            this.lblOrderDate = new System.Windows.Forms.Label();
-            this.lblCostWithDiscount = new System.Windows.Forms.Label();
-            this.lblCostDiscounts = new System.Windows.Forms.Label();
-            this.lblPickUpPoint = new System.Windows.Forms.Label();
             this.lblOrderCode = new System.Windows.Forms.Label();
+            this.lblPickUpPoint = new System.Windows.Forms.Label();
+            this.lblCostDiscounts = new System.Windows.Forms.Label();
+            this.lblCostWithDiscount = new System.Windows.Forms.Label();
+            this.lblOrderDate = new System.Windows.Forms.Label();
+            this.lstTicket = new System.Windows.Forms.ListBox();
             this.pnlUp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.pnlDown.SuspendLayout();
@@ -102,6 +102,83 @@
             this.pnlDown.Size = new System.Drawing.Size(309, 302);
             this.pnlDown.TabIndex = 3;
             // 
+            // pnlBottom
+            // 
+            this.pnlBottom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlBottom.Controls.Add(this.lblOrderCode);
+            this.pnlBottom.Controls.Add(this.lblPickUpPoint);
+            this.pnlBottom.Controls.Add(this.lblCostDiscounts);
+            this.pnlBottom.Controls.Add(this.lblCostWithDiscount);
+            this.pnlBottom.Controls.Add(this.lblOrderDate);
+            this.pnlBottom.Location = new System.Drawing.Point(3, 3);
+            this.pnlBottom.Name = "pnlBottom";
+            this.pnlBottom.Size = new System.Drawing.Size(303, 296);
+            this.pnlBottom.TabIndex = 0;
+            // 
+            // lblOrderCode
+            // 
+            this.lblOrderCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblOrderCode.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblOrderCode.Location = new System.Drawing.Point(3, 5);
+            this.lblOrderCode.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.lblOrderCode.Name = "lblOrderCode";
+            this.lblOrderCode.Size = new System.Drawing.Size(289, 42);
+            this.lblOrderCode.TabIndex = 19;
+            this.lblOrderCode.Text = "Код заказа\r\n";
+            this.lblOrderCode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblPickUpPoint
+            // 
+            this.lblPickUpPoint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPickUpPoint.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.lblPickUpPoint.Location = new System.Drawing.Point(3, 150);
+            this.lblPickUpPoint.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.lblPickUpPoint.Name = "lblPickUpPoint";
+            this.lblPickUpPoint.Size = new System.Drawing.Size(293, 73);
+            this.lblPickUpPoint.TabIndex = 18;
+            this.lblPickUpPoint.Text = "Пункт выдачи: ";
+            // 
+            // lblCostDiscounts
+            // 
+            this.lblCostDiscounts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCostDiscounts.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.lblCostDiscounts.Location = new System.Drawing.Point(3, 122);
+            this.lblCostDiscounts.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.lblCostDiscounts.Name = "lblCostDiscounts";
+            this.lblCostDiscounts.Size = new System.Drawing.Size(293, 23);
+            this.lblCostDiscounts.TabIndex = 17;
+            this.lblCostDiscounts.Text = "Сумма скидки: ";
+            this.lblCostDiscounts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblCostWithDiscount
+            // 
+            this.lblCostWithDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCostWithDiscount.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.lblCostWithDiscount.Location = new System.Drawing.Point(3, 94);
+            this.lblCostWithDiscount.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.lblCostWithDiscount.Name = "lblCostWithDiscount";
+            this.lblCostWithDiscount.Size = new System.Drawing.Size(298, 23);
+            this.lblCostWithDiscount.TabIndex = 16;
+            this.lblCostWithDiscount.Text = "Сумма заказа: ";
+            this.lblCostWithDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblOrderDate
+            // 
+            this.lblOrderDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblOrderDate.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.lblOrderDate.Location = new System.Drawing.Point(3, 66);
+            this.lblOrderDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.lblOrderDate.Name = "lblOrderDate";
+            this.lblOrderDate.Size = new System.Drawing.Size(293, 23);
+            this.lblOrderDate.TabIndex = 15;
+            this.lblOrderDate.Text = "Дата заказа:";
+            this.lblOrderDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // lstTicket
             // 
             this.lstTicket.Font = new System.Drawing.Font("Comic Sans MS", 9F);
@@ -116,83 +193,6 @@
             this.lstTicket.Size = new System.Drawing.Size(309, 208);
             this.lstTicket.Sorted = true;
             this.lstTicket.TabIndex = 4;
-            // 
-            // pnlBottom
-            // 
-            this.pnlBottom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlBottom.Controls.Add(this.lblOrderCode);
-            this.pnlBottom.Controls.Add(this.lblPickUpPoint);
-            this.pnlBottom.Controls.Add(this.lblCostDiscounts);
-            this.pnlBottom.Controls.Add(this.lblCostWithDiscount);
-            this.pnlBottom.Controls.Add(this.lblOrderDate);
-            this.pnlBottom.Location = new System.Drawing.Point(3, 3);
-            this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(303, 296);
-            this.pnlBottom.TabIndex = 0;
-            // 
-            // lblOrderDate
-            // 
-            this.lblOrderDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblOrderDate.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblOrderDate.Location = new System.Drawing.Point(3, 52);
-            this.lblOrderDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.lblOrderDate.Name = "lblOrderDate";
-            this.lblOrderDate.Size = new System.Drawing.Size(293, 23);
-            this.lblOrderDate.TabIndex = 15;
-            this.lblOrderDate.Text = "Дата заказа:";
-            this.lblOrderDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblCostWithDiscount
-            // 
-            this.lblCostWithDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCostWithDiscount.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblCostWithDiscount.Location = new System.Drawing.Point(3, 80);
-            this.lblCostWithDiscount.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.lblCostWithDiscount.Name = "lblCostWithDiscount";
-            this.lblCostWithDiscount.Size = new System.Drawing.Size(289, 23);
-            this.lblCostWithDiscount.TabIndex = 16;
-            this.lblCostWithDiscount.Text = "Сумма заказа: ";
-            this.lblCostWithDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblCostDiscounts
-            // 
-            this.lblCostDiscounts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCostDiscounts.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblCostDiscounts.Location = new System.Drawing.Point(3, 108);
-            this.lblCostDiscounts.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.lblCostDiscounts.Name = "lblCostDiscounts";
-            this.lblCostDiscounts.Size = new System.Drawing.Size(293, 23);
-            this.lblCostDiscounts.TabIndex = 17;
-            this.lblCostDiscounts.Text = "Сумма скидки: ";
-            this.lblCostDiscounts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblPickUpPoint
-            // 
-            this.lblPickUpPoint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPickUpPoint.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblPickUpPoint.Location = new System.Drawing.Point(3, 136);
-            this.lblPickUpPoint.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.lblPickUpPoint.Name = "lblPickUpPoint";
-            this.lblPickUpPoint.Size = new System.Drawing.Size(293, 73);
-            this.lblPickUpPoint.TabIndex = 18;
-            this.lblPickUpPoint.Text = "Пункт выдачи: ";
-            // 
-            // lblOrderCode
-            // 
-            this.lblOrderCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblOrderCode.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblOrderCode.Location = new System.Drawing.Point(3, 5);
-            this.lblOrderCode.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.lblOrderCode.Name = "lblOrderCode";
-            this.lblOrderCode.Size = new System.Drawing.Size(289, 42);
-            this.lblOrderCode.TabIndex = 19;
-            this.lblOrderCode.Text = "Код заказа\r\n";
-            this.lblOrderCode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // frmTicket
             // 

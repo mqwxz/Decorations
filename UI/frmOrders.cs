@@ -47,7 +47,6 @@ namespace LLC_Decoration.UI
             }
         }
 
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();

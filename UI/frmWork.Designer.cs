@@ -33,16 +33,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlDown = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.picLogo = new System.Windows.Forms.PictureBox();
-            this.pnlDiscount = new System.Windows.Forms.Panel();
-            this.lblOut = new System.Windows.Forms.Label();
-            this.lblDiscount = new System.Windows.Forms.Label();
             this.pnlProductDescription = new System.Windows.Forms.Panel();
-            this.lblCostWithDiscount = new System.Windows.Forms.Label();
-            this.lblCost = new System.Windows.Forms.Label();
-            this.lblProductManufacturer = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.dtpOrder = new System.Windows.Forms.DateTimePicker();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.cboStatus = new System.Windows.Forms.ComboBox();
             this.lblProductDescription = new System.Windows.Forms.Label();
             this.lblProductName = new System.Windows.Forms.Label();
             this.lblSortingPrice = new System.Windows.Forms.Label();
@@ -54,7 +51,6 @@
             this.pnlDown.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
-            this.pnlDiscount.SuspendLayout();
             this.pnlProductDescription.SuspendLayout();
             this.pnlUp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdersMA)).BeginInit();
@@ -63,29 +59,13 @@
             // pnlDown
             // 
             this.pnlDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
-            this.pnlDown.Controls.Add(this.btnClose);
             this.pnlDown.Controls.Add(this.pnlLogo);
-            this.pnlDown.Controls.Add(this.pnlDiscount);
             this.pnlDown.Controls.Add(this.pnlProductDescription);
             this.pnlDown.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlDown.Location = new System.Drawing.Point(0, 476);
             this.pnlDown.Name = "pnlDown";
             this.pnlDown.Size = new System.Drawing.Size(1255, 135);
             this.pnlDown.TabIndex = 2;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.btnClose.Location = new System.Drawing.Point(1155, 99);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(97, 33);
-            this.btnClose.TabIndex = 15;
-            this.btnClose.Text = "Выход";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // pnlLogo
             // 
@@ -108,98 +88,78 @@
             this.picLogo.TabIndex = 1;
             this.picLogo.TabStop = false;
             // 
-            // pnlDiscount
-            // 
-            this.pnlDiscount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlDiscount.Controls.Add(this.lblOut);
-            this.pnlDiscount.Controls.Add(this.lblDiscount);
-            this.pnlDiscount.Location = new System.Drawing.Point(968, 3);
-            this.pnlDiscount.Name = "pnlDiscount";
-            this.pnlDiscount.Size = new System.Drawing.Size(284, 56);
-            this.pnlDiscount.TabIndex = 12;
-            // 
-            // lblOut
-            // 
-            this.lblOut.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblOut.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblOut.Location = new System.Drawing.Point(3, 0);
-            this.lblOut.Name = "lblOut";
-            this.lblOut.Size = new System.Drawing.Size(274, 24);
-            this.lblOut.TabIndex = 8;
-            this.lblOut.Text = "Размер скидки: ";
-            this.lblOut.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDiscount
-            // 
-            this.lblDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDiscount.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblDiscount.Location = new System.Drawing.Point(3, 24);
-            this.lblDiscount.Name = "lblDiscount";
-            this.lblDiscount.Size = new System.Drawing.Size(274, 24);
-            this.lblDiscount.TabIndex = 7;
-            this.lblDiscount.Text = "Скидка";
-            this.lblDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // pnlProductDescription
             // 
             this.pnlProductDescription.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlProductDescription.Controls.Add(this.lblCostWithDiscount);
-            this.pnlProductDescription.Controls.Add(this.lblCost);
-            this.pnlProductDescription.Controls.Add(this.lblProductManufacturer);
+            this.pnlProductDescription.Controls.Add(this.btnUpdate);
+            this.pnlProductDescription.Controls.Add(this.dtpOrder);
+            this.pnlProductDescription.Controls.Add(this.btnClose);
+            this.pnlProductDescription.Controls.Add(this.cboStatus);
             this.pnlProductDescription.Controls.Add(this.lblProductDescription);
             this.pnlProductDescription.Controls.Add(this.lblProductName);
             this.pnlProductDescription.Location = new System.Drawing.Point(186, 3);
             this.pnlProductDescription.Name = "pnlProductDescription";
-            this.pnlProductDescription.Size = new System.Drawing.Size(776, 129);
+            this.pnlProductDescription.Size = new System.Drawing.Size(1066, 129);
             this.pnlProductDescription.TabIndex = 1;
             // 
-            // lblCostWithDiscount
+            // btnUpdate
             // 
-            this.lblCostWithDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCostWithDiscount.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblCostWithDiscount.Location = new System.Drawing.Point(246, 98);
-            this.lblCostWithDiscount.Name = "lblCostWithDiscount";
-            this.lblCostWithDiscount.Size = new System.Drawing.Size(523, 23);
-            this.lblCostWithDiscount.TabIndex = 12;
-            this.lblCostWithDiscount.Text = "Цена с";
-            this.lblCostWithDiscount.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.btnUpdate.Location = new System.Drawing.Point(695, 84);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(235, 38);
+            this.btnUpdate.TabIndex = 17;
+            this.btnUpdate.Text = "Изменить данные";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // lblCost
+            // dtpOrder
             // 
-            this.lblCost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCost.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblCost.Location = new System.Drawing.Point(153, 98);
-            this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(521, 23);
-            this.lblCost.TabIndex = 11;
-            this.lblCost.Text = "Цена без скидки:  ";
-            this.lblCost.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.dtpOrder.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.dtpOrder.Location = new System.Drawing.Point(215, 31);
+            this.dtpOrder.Name = "dtpOrder";
+            this.dtpOrder.Size = new System.Drawing.Size(200, 30);
+            this.dtpOrder.TabIndex = 16;
             // 
-            // lblProductManufacturer
+            // btnClose
             // 
-            this.lblProductManufacturer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblProductManufacturer.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblProductManufacturer.Location = new System.Drawing.Point(-2, 97);
-            this.lblProductManufacturer.Name = "lblProductManufacturer";
-            this.lblProductManufacturer.Size = new System.Drawing.Size(593, 23);
-            this.lblProductManufacturer.TabIndex = 9;
-            this.lblProductManufacturer.Text = "Производитель: ";
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(102)))), ((int)(((byte)(0)))));
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.btnClose.Location = new System.Drawing.Point(933, 84);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(126, 38);
+            this.btnClose.TabIndex = 15;
+            this.btnClose.Text = "Выход";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // cboStatus
+            // 
+            this.cboStatus.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.cboStatus.FormattingEnabled = true;
+            this.cboStatus.Items.AddRange(new object[] {
+            "Новый",
+            "Завершен"});
+            this.cboStatus.Location = new System.Drawing.Point(39, 31);
+            this.cboStatus.Name = "cboStatus";
+            this.cboStatus.Size = new System.Drawing.Size(139, 31);
+            this.cboStatus.TabIndex = 7;
             // 
             // lblProductDescription
             // 
             this.lblProductDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProductDescription.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.lblProductDescription.Location = new System.Drawing.Point(3, 28);
+            this.lblProductDescription.Location = new System.Drawing.Point(223, 2);
             this.lblProductDescription.Name = "lblProductDescription";
-            this.lblProductDescription.Size = new System.Drawing.Size(766, 70);
+            this.lblProductDescription.Size = new System.Drawing.Size(191, 25);
             this.lblProductDescription.TabIndex = 8;
-            this.lblProductDescription.Text = "Описание товара: ";
+            this.lblProductDescription.Text = "Дата доставки";
             this.lblProductDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblProductName
@@ -209,9 +169,9 @@
             this.lblProductName.Font = new System.Drawing.Font("Comic Sans MS", 12F);
             this.lblProductName.Location = new System.Drawing.Point(3, 3);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(766, 25);
+            this.lblProductName.Size = new System.Drawing.Size(217, 25);
             this.lblProductName.TabIndex = 7;
-            this.lblProductName.Text = "Наименование товара: ";
+            this.lblProductName.Text = "Статус заказа";
             this.lblProductName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblSortingPrice
@@ -315,6 +275,7 @@
             this.dgvOrdersMA.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvOrdersMA.Size = new System.Drawing.Size(1255, 341);
             this.dgvOrdersMA.TabIndex = 3;
+            this.dgvOrdersMA.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvOrdersMA_CellMouseClick);
             // 
             // frmWork
             // 
@@ -334,7 +295,6 @@
             this.pnlDown.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
-            this.pnlDiscount.ResumeLayout(false);
             this.pnlProductDescription.ResumeLayout(false);
             this.pnlUp.ResumeLayout(false);
             this.pnlUp.PerformLayout();
@@ -348,14 +308,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel pnlLogo;
         private System.Windows.Forms.PictureBox picLogo;
-        private System.Windows.Forms.Panel pnlDiscount;
-        private System.Windows.Forms.Label lblOut;
-        private System.Windows.Forms.Label lblDiscount;
         private System.Windows.Forms.Panel pnlProductDescription;
-        private System.Windows.Forms.Label lblCostWithDiscount;
-        private System.Windows.Forms.Label lblCost;
-        private System.Windows.Forms.Label lblProductManufacturer;
-        private System.Windows.Forms.Label lblProductDescription;
         private System.Windows.Forms.Label lblProductName;
         private System.Windows.Forms.Label lblSortingPrice;
         private System.Windows.Forms.ComboBox cboSortingPrice;
@@ -363,5 +316,9 @@
         private System.Windows.Forms.ComboBox cboSortingDiscount;
         private System.Windows.Forms.Panel pnlUp;
         private System.Windows.Forms.DataGridView dgvOrdersMA;
+        private System.Windows.Forms.ComboBox cboStatus;
+        private System.Windows.Forms.Label lblProductDescription;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.DateTimePicker dtpOrder;
     }
 }

@@ -23,7 +23,6 @@ namespace LLC_Decoration.Classes
         public static DateTime OrderDate { get; set; }
         public static string OrderCode { get; set; }
 
-
         public string Values => $"{ProductArticleNumber} | Товар: {ProductName} | Производитель: {ProductManufacturer} | Категория: {ProductCategory} " +
             $"| Скидка: {ProductDiscountAmount}% | Итоговая стоимость: {ProductCostWithDiscount}";
     }
