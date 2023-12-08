@@ -50,7 +50,7 @@ namespace ООО__Украшение_.UI
                     btnWork.Visible = true;
                     break;
                 case 4:
-                    lblFIO.Text = "Добро пожаловать, Гость!\nДоступен только режим просмотра товаров";
+                    lblFIO.Text = "Добро пожаловать, Гость!";
                     break;
             }
         }
