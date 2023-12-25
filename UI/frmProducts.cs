@@ -331,7 +331,6 @@ namespace ООО__Украшение_.UI
                         cmd.Parameters.AddWithValue("@ProductArticleNumber", dgvProducts.CurrentRow.Cells[0].Value.ToString());
                         cmd.ExecuteNonQuery();
                         connectionString.Close();
-
                     }
                     MessageBox.Show($"Товар был успешно удалён!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ShowProducts();
