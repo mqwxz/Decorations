@@ -72,13 +72,6 @@ namespace LLC_Decoration.UI
             }
         }   
 
-        private void btnCostWithDiscount_Click(object sender, EventArgs e)
-        {
-            int cost = Convert.ToInt32(txtCost.Text.ToString());
-            int discount = Convert.ToInt32(txtDiscountAmount.Text.ToString());
-            txtWithDiscount.Text = (cost - cost * discount / 100).ToString();
-        }
-
         private void btnPhoto_Click(object sender, EventArgs e)
         {
             try
@@ -107,23 +100,45 @@ namespace LLC_Decoration.UI
                 picProduct.Image.Save(memoryStream, picProduct.Image.RawFormat);
                 byte[] a = memoryStream.GetBuffer();
                 memoryStream.Close();
-
-                using (SqlConnection connectionString = new SqlConnection(LLC_Decoration.Properties.Settings.Default.connectionString))
+                try
                 {
-                    connectionString.Open();
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "InsertPhoto";
-                    cmd.Connection = connectionString;
-                    cmd.Parameters.AddWithValue("@ProductPhoto", a);
-                    cmd.Parameters.AddWithValue("@ProductArticleNumber", txtArticle.Text.ToString());
-                    cmd.ExecuteNonQuery();
-                    connectionString.Close();
-                    lblPath.Text = "";
-                    picProduct.Image = null;
+                    using (SqlConnection connectionString = new SqlConnection(LLC_Decoration.Properties.Settings.Default.connectionString))
+                    {
+                        connectionString.Open();
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "InsertPhoto";
+                        cmd.Connection = connectionString;
+                        cmd.Parameters.AddWithValue("@ProductPhoto", lblPath.Text);
+                        cmd.Parameters.AddWithValue("@ProductArticleNumber", txtArticle.Text.ToString());
+                        cmd.ExecuteNonQuery();
+                        connectionString.Close();
+                        lblPath.Text = "";
+                        picProduct.Image = null;
+                        Clear();
+                    }
+                    MessageBox.Show($"Фото товара было успешно обновлено!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                MessageBox.Show($"Фото товара было успешно обновлено!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                catch
+                {
+                    MessageBox.Show($"Возможно товар с таким артиклем уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+        }
+
+        private void Clear()
+        {
+            txtArticle.Clear();
+            txtName.Clear();
+            txtCost.Clear();
+            txtManufacturer.Clear();
+            txtDescription.Clear();
+            txtCategory.Clear();
+            txtDiscountAmount.Clear();
+            txtMaxDiscount.Clear();
+            txtSupplier.Clear();
+            txtUnit.Clear();
+            txtQuantity.Clear();
         }
     }
 }
