@@ -65,9 +65,9 @@ namespace LLC_Decoration.UI
                     btnPhoto.Visible = true;
                     btnSavePhoto.Visible = true;
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show($"Произошёл сбой!\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Возможно товар с таким артиклем уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }   
@@ -100,29 +100,22 @@ namespace LLC_Decoration.UI
                 picProduct.Image.Save(memoryStream, picProduct.Image.RawFormat);
                 byte[] a = memoryStream.GetBuffer();
                 memoryStream.Close();
-                try
+                using (SqlConnection connectionString = new SqlConnection(LLC_Decoration.Properties.Settings.Default.connectionString))
                 {
-                    using (SqlConnection connectionString = new SqlConnection(LLC_Decoration.Properties.Settings.Default.connectionString))
-                    {
-                        connectionString.Open();
-                        SqlCommand cmd = new SqlCommand();
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandText = "InsertPhoto";
-                        cmd.Connection = connectionString;
-                        cmd.Parameters.AddWithValue("@ProductPhoto", lblPath.Text);
-                        cmd.Parameters.AddWithValue("@ProductArticleNumber", txtArticle.Text.ToString());
-                        cmd.ExecuteNonQuery();
-                        connectionString.Close();
-                        lblPath.Text = "";
-                        picProduct.Image = null;
-                        Clear();
-                    }
-                    MessageBox.Show($"Фото товара было успешно обновлено!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    connectionString.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "InsertPhoto";
+                    cmd.Connection = connectionString;
+                    cmd.Parameters.AddWithValue("@ProductPhoto", lblPath.Text);
+                    cmd.Parameters.AddWithValue("@ProductArticleNumber", txtArticle.Text.ToString());
+                    cmd.ExecuteNonQuery();
+                    connectionString.Close();
+                    lblPath.Text = "";
+                    picProduct.Image = null;
+                    Clear();
                 }
-                catch
-                {
-                    MessageBox.Show($"Возможно товар с таким артиклем уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show($"Фото товара было успешно обновлено!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
